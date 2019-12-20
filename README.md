@@ -24,6 +24,8 @@ Create a file in the Prizm directory to contain your Accusoft Prizm license key.
 
 4. Prizm from host: http://localhost:18681/PCCIS/V1/Static/Viewer/Test
 
+5. Tika from host: http://localhost:9998/tika
+
 ---
 
 ### Windows troubleshooting tips
