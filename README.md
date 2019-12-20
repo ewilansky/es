@@ -1,4 +1,4 @@
-# ES, Redis, Cerebro, Prizm
+# ES, Redis, Cerebro, Prizm, Tika
 
 ## Pre-Compose Step
 

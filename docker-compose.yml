@@ -34,7 +34,7 @@ services:
     ports:
       - 9200:9200
     networks:
-      esnet:
+      radnet:
         aliases:
           - 'es'
 
@@ -44,7 +44,7 @@ services:
     ports:
       - 9000:9000
     networks:
-      esnet:
+      radnet:
         aliases:
           - 'cerebro'
 
@@ -59,7 +59,7 @@ services:
     ports:
       - 6379:6379
     networks:
-      esnet:
+      radnet:
         aliases:
           - 'redis'
     volumes:
@@ -89,7 +89,7 @@ services:
       - 18681:18681    
       - 18682:18682
     networks:
-      esnet:
+      radnet:
         aliases:
           - 'prizm'
     tty: true
@@ -98,6 +98,15 @@ services:
       - prizm_license
     container_name: prizm
     entrypoint: ["/usr/local/docker-entrypoint.sh"]
+
+  tika:
+    image: logicalspark/docker-tikaserver
+    container_name: tika
+    ports: 9998:9998
+    networks:
+      radnet:
+        aliases:
+          - 'tika'
 
 secrets:
   prizm_license: 
@@ -111,4 +120,4 @@ volumes:
   prizmlogs:
 
 networks:
-   esnet:
+   radnet:
