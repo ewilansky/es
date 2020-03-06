@@ -1,0 +1,196 @@
+version: "3"
+
+services:
+
+  # CAUTION: do not change the mount points inside of the containers
+  #
+  # volume config for the root containers can be updated to use an externally
+  # provisioned volume so it can persist.
+
+  root-rbl-7.33.0.c62.2:
+    image: rosette/root-rbl:7.33.0.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  # root-rex-ara-7.44.1.c62.2:
+    # image: rosette/root-rex-ara:7.44.1.c62.2
+    # volumes:
+    # - rosette-roots-vol:/roots-vol
+  # root-rex-deu-7.44.1.c62.2:
+  #   image: rosette/root-rex-deu:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  root-rex-eng-7.44.1.c62.2:
+    image: rosette/root-rex-eng:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  # root-rex-fas-7.44.1.c62.2:
+  #   image: rosette/root-rex-fas:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  root-rex-fra-7.44.1.c62.2:
+    image: rosette/root-rex-fra:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  # root-rex-heb-7.44.1.c62.2:
+  #   image: rosette/root-rex-heb:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  # root-rex-hun-7.44.1.c62.2:
+  #   image: rosette/root-rex-hun:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  root-rex-ita-7.44.1.c62.2:
+    image: rosette/root-rex-ita:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  root-rex-jpn-7.44.1.c62.2:
+    image: rosette/root-rex-jpn:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  root-rex-kor-7.44.1.c62.2:
+    image: rosette/root-rex-kor:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  # root-rex-nld-7.44.1.c62.2:
+  #   image: rosette/root-rex-nld:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  root-rex-por-7.44.1.c62.2:
+    image: rosette/root-rex-por:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  # root-rex-pus-7.44.1.c62.2:
+  #   image: rosette/root-rex-pus:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  root-rex-root-7.44.1.c62.2:
+    image: rosette/root-rex-root:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  root-rex-rus-7.44.1.c62.2:
+    image: rosette/root-rex-rus:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  root-rex-spa-7.44.1.c62.2:
+    image: rosette/root-rex-spa:7.44.1.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  # root-rex-swe-7.44.1.c62.2:
+  #   image: rosette/root-rex-swe:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  # root-rex-urd-7.44.1.c62.2:
+  #   image: rosette/root-rex-urd:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  # root-rex-zho-7.44.1.c62.2:
+  #   image: rosette/root-rex-zho:7.44.1.c62.2
+  #   volumes:
+  #    - rosette-roots-vol:/roots-vol
+  root-rli-7.22.2.c62.2:
+    image: rosette/root-rli:7.22.2.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+  root-rni-rnt-7.30.3.c62.2:
+    image: rosette/root-rni-rnt:7.30.3.c62.2
+    volumes:
+     - rosette-roots-vol:/roots-vol
+
+
+  rosette-server:
+    image: rosette/server-enterprise:1.15.1
+    depends_on:
+     - root-rbl-7.33.0.c62.2
+     # - root-rex-ara-7.44.1.c62.2
+     # - root-rex-deu-7.44.1.c62.2
+     - root-rex-eng-7.44.1.c62.2
+     # - root-rex-fas-7.44.1.c62.2
+     - root-rex-fra-7.44.1.c62.2
+     # - root-rex-heb-7.44.1.c62.2
+     # - root-rex-hun-7.44.1.c62.2
+     - root-rex-ita-7.44.1.c62.2
+     - root-rex-jpn-7.44.1.c62.2
+     - root-rex-kor-7.44.1.c62.2
+     # - root-rex-nld-7.44.1.c62.2
+     - root-rex-por-7.44.1.c62.2
+     # - root-rex-pus-7.44.1.c62.2
+     - root-rex-root-7.44.1.c62.2
+     - root-rex-rus-7.44.1.c62.2
+     - root-rex-spa-7.44.1.c62.2
+     # - root-rex-swe-7.44.1.c62.2
+     # - root-rex-urd-7.44.1.c62.2
+     # - root-rex-zho-7.44.1.c62.2
+     - root-rli-7.22.2.c62.2
+     - root-rni-rnt-7.30.3.c62.2
+
+    volumes:
+      # - rosette-roots-vol:/rosette/server/roots:ro
+      - rosette-roots-vol:/rosette/server/roots
+      # - ${ROSAPI_LICENSE_PATH}:/rosette/server/launcher/config/rosapi/rosette-license.xml:ro
+      - ${ROSAPI_LICENSE_PATH}:/rosette/server/launcher/config/rosapi/rosette-license.xml
+    ports:
+      - "8181:8181"
+    environment:
+      - ROSETTE_JVM_MAX_HEAP=8  # max Java heap size in GB, default is 4, must be >=4; to run all endpoints the recommended minimum is 16
+#      - ROSETTE_WORKER_THREADS=2  # number of worker threads, default is 2, must be >=1
+#      - ROSETTE_PRE_WARM=false  # pre-warm the server on startup, default is false, valid values are true|false
+#      - ROSETTE_DOC_HOST_PORT=localhost:8181  # hostname should be accessible on the network, port value should match mapped port above
+       # - ROSAPI_LICENSE_PATH="./rosette-license.xml"
+
+    command:
+      - /bin/bash
+      - -c
+      # - |
+      #     while ! [[ \
+      #      true \
+      #     && -f /rosette/server/roots/.root-rbl-7.33.0.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-ara-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-deu-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-eng-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-fas-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-fra-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-heb-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-hun-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-ita-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-jpn-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-kor-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-nld-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-por-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-pus-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-root-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-rus-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-spa-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-swe-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-urd-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rex-zho-7.44.1.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rli-7.22.2.c62.2.unpacked \
+      #     && -f /rosette/server/roots/.root-rni-rnt-7.30.3.c62.2.unpacked \
+      #     ]] ; do
+      #       echo "waiting for roots to be unpacked ..."
+      #       sleep 10
+      #     done
+      #     bash /rosette/server/bin/update_config.sh && /rosette/server/bin/launch.sh console
+      - |
+          while ! [[ \
+           true \
+          && -f /rosette/server/roots/.root-rbl-7.33.0.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-eng-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-fra-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-ita-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-jpn-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-kor-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-por-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-root-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-rus-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rex-spa-7.44.1.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rli-7.22.2.c62.2.unpacked \
+          && -f /rosette/server/roots/.root-rni-rnt-7.30.3.c62.2.unpacked \
+          ]] ; do
+            echo "waiting for roots to be unpacked ..."
+            sleep 10
+          done
+          bash /rosette/server/bin/update_config.sh && /rosette/server/bin/launch.sh console
+
+volumes:
+  # if a local volume is not desirable, change this to suit your needs
+  rosette-roots-vol:

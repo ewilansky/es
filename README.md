@@ -1,4 +1,4 @@
-# ES, Redis, Cerebro, Prizm, Tika
+# ES, Redis, Cerebro, Prizm, Tika and Basis
 
 ## Pre-Compose Step
 
@@ -8,7 +8,7 @@ Create a file in the Prizm directory to contain your Accusoft Prizm license key.
 - for version 12, name the file: license_v12.txt
 - for version 13, name the file: license_v13.txt
 
-## Compose Containers
+## Compose Containers (except Basis)
 
 1. Run `docker-compose up -d`
 
@@ -28,7 +28,17 @@ Create a file in the Prizm directory to contain your Accusoft Prizm license key.
 
 ---
 
-### Windows troubleshooting tips
+## Basis Containers
+
+1. Copy the basis license XML file to the basis directory (must get from vendor)
+
+2. Change to the Basis directory
+
+3. Run `ROSAPI_LICENSE_PATH="./rosette-license.xml" docker-compose up -d`
+
+    **Note**: A number of language modules have been commented-out to reduce resource requirements. Also, JVM heap-size has been doubled from the default in docker-compose.
+
+## Windows Troubleshooting Tips
 
 If you get volume mapping errors, make sure COMPOSE_CONVERT_WINDOWS_PATHS is set in your environment variables
 
